@@ -17,6 +17,8 @@ services:
       - OCR_PROCESS_EXISTING_ON_START=1
       - OCR_USE_POLLING_SCHEDULER=1
       - OCR_ACTION_ON_SUCCESS=ARCHIVE_INPUT_FILES
+      - USERMAP_UID=1000
+      - USERMAP_GID=1000
   syncthing:
     image: lscr.io/linuxserver/syncthing:latest
     container_name: syncthing
