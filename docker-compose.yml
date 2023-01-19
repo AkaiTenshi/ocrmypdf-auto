@@ -16,4 +16,20 @@ services:
       - OCR_OUTPUT_MODE=MIRROR_TREE
       - OCR_PROCESS_EXISTING_ON_START=1
       - OCR_USE_POLLING_SCHEDULER=1
-      - OCR_ACTION_ON_SUCCESS=ARCHIVE_INPUT_FILES  
+      - OCR_ACTION_ON_SUCCESS=ARCHIVE_INPUT_FILES
+  syncthing:
+    image: lscr.io/linuxserver/syncthing:latest
+    container_name: syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Athens
+    volumes:
+      - /var/syncthing/config:/config
+      - /var/syncthing/data:/data
+    ports:
+      - 8384:8384
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp
+    restart: always
