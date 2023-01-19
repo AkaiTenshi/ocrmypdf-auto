@@ -1,0 +1,21 @@
+---
+version: "3.3"
+services:
+  amsocr:
+    restart: always
+    container_name: amsocr
+    image: cmccambridge/ocrmypdf-auto
+    volumes:
+      - "/media/ocr/input:/input"
+      - "/media/ocr/output:/output"
+      - "/media/ocr/archive:/archive"
+      - "/media/ocr/logs:/logs"
+      - "/media/ocr/config:/config"
+    environment:
+      - OCR_LANGUAGES=eng grc ell swe 
+      - OCR_OUTPUT_MODE=MIRROR_TREE
+      - OCR_PROCESS_EXISTING_ON_START=1
+      - OCR_USE_POLLING_SCHEDULER=1
+      - OCR_ACTION_ON_SUCCESS=ARCHIVE_INPUT_FILES
+    entrypoint: docker-entrypoint.sh
+  
