@@ -28,7 +28,7 @@ services:
       - TZ=Europe/Athens
     volumes:
       - /var/syncthing/config:/config
-      - /var/syncthing/data:/data
+      - /media/ocr/input:/data
     ports:
       - 8384:8384
       - 22000:22000/tcp
