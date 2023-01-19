@@ -4,7 +4,7 @@ services:
   amsocr:
     restart: always
     container_name: amsocr
-    image: cmccambridge/ocrmypdf-auto
+    image: chmaikos/amsocr:auto
     volumes:
       - "/media/ocr/input:/input"
       - "/media/ocr/output:/output"
@@ -28,8 +28,6 @@ services:
       - TZ=Europe/Athens
     volumes:
       - /var/syncthing/config:/config
-      #- /media/ocr/input:/data/input_pdf
-      #- /media/ocr/output:/data/output_pdf
     volumes_from:
       - amsocr
     ports:
