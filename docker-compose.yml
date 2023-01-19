@@ -28,7 +28,10 @@ services:
       - TZ=Europe/Athens
     volumes:
       - /var/syncthing/config:/config
-      - /media/ocr/input:/data
+      #- /media/ocr/input:/data/input_pdf
+      #- /media/ocr/output:/data/output_pdf
+    volumes_from:
+      - amsocr
     ports:
       - 8384:8384
       - 22000:22000/tcp
